@@ -4,7 +4,6 @@
 <title>Shaded W Cattle Co. | Texas Wagyu Beef</title>
 <meta name="robots" content="noindex,nofollow">
 <!-- Store layout v2 (11/24): Bulk shares vs Ready boxes. Demo data, not for customers yet. -->
-
 <link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#2a2725"><meta name="apple-mobile-web-app-title" content="Shaded W">
@@ -271,8 +270,8 @@ document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
 let cart={};
 function card(p){
   const sh=kindOf(p)==='share',lb=lbOf(p);
-  const extra=sh?`<div class="lb">~${lb} lb take-home${lb?` · about ${money(p.price/lb)}/lb`:''}</div><div class="dep">Deposit today ${money(p.price*DEP)}</div>`:`<div class="lb">${lb?`~${lb} lb · `:''}ships cold</div>`;
-  return `<div class="prod ${sh?'share':''}"><span class="badge ${sh?'':'b2'}">${sh?'BULK SHARE':'BOX'}</span><div class="ic">${p.ic}</div><h3>${esc(p.name)}</h3><div class="d">${esc(p.desc)}</div>
+  const extra=sh?`${lb?`<div class="lb">~${lb} lb take-home · about ${money(p.price/lb)}/lb</div>`:''}<div class="dep">Deposit today ${money(p.price*DEP)}</div>`:`<div class="lb">${lb?`~${lb} lb · `:''}ships cold</div>`;
+  return `<div class="prod ${sh?'share':''}"><span class="badge ${sh?'':'b2'}">${sh?'BULK SHARE':'BOX'}</span><div class="ic">${esc(p.ic)}</div><h3>${esc(p.name)}</h3><div class="d">${esc(p.desc)}</div>
    <div class="p">${money(p.price)}</div>${extra}<div class="qty"><button onclick="cq('${p.id}',-1)">−</button><b>${cart[p.id]||0}</b><button onclick="cq('${p.id}',1)">+</button></div></div>`;
 }
 function cartSplit(){
@@ -285,6 +284,7 @@ function drawStore(){
   document.getElementById('boxGrid').innerHTML=DB.P.filter(p=>kindOf(p)!=='share').map(card).join('');
   const {ks,sh,bx,dep}=cartSplit(),sel=document.getElementById('cMethod'),cur=sel.value;
   const opts=sh?['Pickup at ranch','Local delivery']:['Pickup at ranch','Local delivery','Ship (cold pack)'];   // shares are never shipped
+  if(sh&&/^Ship/.test(cur))toast('Bulk shares: pickup or local delivery only (boxes can ship)');
   sel.innerHTML=opts.map(m=>`<option ${m===cur?'selected':''}>${m}</option>`).join('');
   document.getElementById('cartList').innerHTML=ks.length?ks.map(k=>`${cart[k]} × ${esc(prod(k).name)} <span style="float:right">${money(prod(k).price*cart[k])}</span>`).join('<br>'):'Nothing yet.';
   document.getElementById('cartTot').textContent=money(sh+bx);
@@ -374,7 +374,7 @@ function drawMoney(){
   const by={};DB.O.forEach(o=>o.items.forEach(i=>{const b=by[i.p]||(by[i.p]={q:0,s:0,c:0});const p=prod(i.p);b.q+=i.q;b.s+=p.price*i.q;b.c+=p.cost*i.q}));
   const mx=Math.max(1,...Object.values(by).map(b=>b.s));
   document.getElementById('byProd').innerHTML='<tr><th>Product</th><th class="r">Sold</th><th class="r">Sales</th><th class="r">Cost</th><th class="r">Profit</th><th style="width:25%"></th></tr>'+
-    Object.entries(by).sort((a,b)=>b[1].s-a[1].s).map(([id,b])=>`<tr><td>${prod(id).ic} ${esc(prod(id).name)}</td><td class="r">${b.q}</td><td class="r">${money(b.s)}</td><td class="r">${money(b.c)}</td><td class="r"><b>${money(b.s-b.c)}</b></td><td><div class="bar" style="width:${b.s/mx*100}%"></div></td></tr>`).join('');
+    Object.entries(by).sort((a,b)=>b[1].s-a[1].s).map(([id,b])=>`<tr><td>${esc(prod(id).ic)} ${esc(prod(id).name)}</td><td class="r">${b.q}</td><td class="r">${money(b.s)}</td><td class="r">${money(b.c)}</td><td class="r"><b>${money(b.s-b.c)}</b></td><td><div class="bar" style="width:${b.s/mx*100}%"></div></td></tr>`).join('');
   const ow=DB.O.filter(o=>tot(o)>(+o.paid||0));
   document.getElementById('owes').innerHTML='<tr><th>Order</th><th>Customer</th><th>Status</th><th class="r">Total</th><th class="r">Paid</th><th class="r">Owes</th></tr>'+
     (ow.map(o=>`<tr style="cursor:pointer" onclick="editOrder('${o.id}')"><td>${o.id}</td><td>${esc(o.cust)}</td><td>${SNAME[o.status]}</td><td class="r">${money(tot(o))}</td><td class="r">${money(o.paid)}</td><td class="r"><b>${money(tot(o)-o.paid)}</b></td></tr>`).join('')||'<tr><td colspan=6>Everyone is paid up 🎉</td></tr>');
@@ -383,7 +383,7 @@ function drawMoney(){
 // prices
 function drawPrices(){
   document.getElementById('priceTbl').innerHTML='<tr><th></th><th>Product</th><th>Type</th><th>Description</th><th class="r">Price</th><th class="r">Cost</th><th class="r">Profit / unit</th><th class="r">Margin</th></tr>'+
-   DB.P.map((p,i)=>`<tr><td><input style="width:46px" value="${p.ic}" onchange="up(${i},'ic',this.value)"></td><td><input value="${esc(p.name)}" onchange="up(${i},'name',this.value)"></td>
+   DB.P.map((p,i)=>`<tr><td><input style="width:46px" value="${esc(p.ic)}" onchange="up(${i},'ic',this.value)"></td><td><input value="${esc(p.name)}" onchange="up(${i},'name',this.value)"></td>
     <td><select style="width:92px" onchange="up(${i},'kind',this.value)"><option value="share" ${kindOf(p)==='share'?'selected':''}>Bulk share</option><option value="box" ${kindOf(p)==='share'?'':'selected'}>Box</option></select></td>
     <td><input value="${esc(p.desc)}" onchange="up(${i},'desc',this.value)"></td>
     <td class="r"><input type="number" style="width:90px" value="${p.price}" onchange="up(${i},'price',+this.value)"></td>
