@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shaded W Cattle Co. | Texas Wagyu Beef</title>
+<meta name="robots" content="noindex,nofollow">
+<!-- Store layout v2 (11/24): Bulk shares vs Ready boxes. Demo data, not for customers yet. -->
+
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#2a2725"><meta name="apple-mobile-web-app-title" content="Shaded W">
+<style>
+:root{--m:#7a1f2b;--m2:#5a1520;--ch:#2a2725;--cr:#f4eee4;--sun:#d9822b;--ok:#2f7d4f;--mut:#7b716a;--card:#fff;--line:#e3d9cc}
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,system-ui,sans-serif;background:var(--cr);color:var(--ch)}
+header{background:var(--ch);color:#fff;display:flex;align-items:center;gap:14px;padding:8px 18px;position:sticky;top:0;z-index:5}
+header .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px}
+nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav button{background:none;border:0;color:#ddd;padding:8px 12px;border-radius:8px;cursor:pointer;font-size:14px}
+nav button.on{background:var(--m);color:#fff}
+.view{display:none}.view.on{display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:14px 18px}
+.hero{position:relative;min-height:300px;background:url(img/sunset-calf.jpg) center/cover;display:flex;align-items:flex-end}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,10,5,.78),rgba(20,10,5,.1) 65%)}
+.hero .in{position:relative;z-index:1;color:#fff;padding:24px 32px;max-width:640px}
+.hero h1{font-size:34px;margin:.15em 0;font-family:Georgia,serif}.hero p{font-size:16px;opacity:.92;margin:.3em 0 .8em}
+.hero .cta{display:flex;gap:8px;flex-wrap:wrap}.btn.ghost{background:rgba(255,255,255,.15);border:1px solid #fff}
+.btn{background:var(--m);color:#fff;border:0;border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer;font-size:14px}
+.btn.alt{background:#fff;color:var(--m);border:1px solid var(--m)}.btn.sm{padding:5px 9px;font-size:12px;border-radius:7px}
+.btn.gr{background:var(--ok)}.btn.gy{background:#8a817a}
+.strip{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;margin:28px 0}
+.strip img{width:100%;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,.15)}
+.strip.tight{grid-template-columns:260px 1fr;gap:18px;margin:6px 0 14px}.strip.tight p{margin:.3em 0}.strip.tight h2{margin:.1em 0}
+.how{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.how span{background:#fff;border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:13px}.how b{color:var(--m)}
+.sech{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:6px 0 10px;border-bottom:2px solid var(--m);padding-bottom:4px}.sech h2{margin:0;font-size:22px}.sech span{color:var(--mut);font-size:13px}
+.prod.share{border:2px solid var(--m)}.badge{align-self:flex-start;background:var(--m);color:#fff;font-size:10px;font-weight:700;letter-spacing:1px;padding:2px 8px;border-radius:10px}.badge.b2{background:var(--sun)}
+.prod .lb{font-size:12px;color:var(--mut)}.prod .dep{font-size:12px;color:var(--m2);font-weight:600}
+.cart .dl{display:flex;justify-content:space-between;font-size:14px;margin:3px 0}.cart .due{font-size:20px;font-weight:700}
+h2{font-family:Georgia,serif;color:var(--m2);margin:.4em 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.prod{background:var(--card);border-radius:14px;padding:16px;border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.prod .ic{font-size:34px}.prod h3{margin:0;font-size:17px}.prod .d{color:var(--mut);font-size:13px;flex:1}
+.prod .p{font-size:22px;font-weight:700;color:var(--m)}
+.qty{display:flex;align-items:center;gap:8px}.qty button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:16px}
+.cart{position:sticky;top:70px;background:#fff;border:2px solid var(--m);border-radius:14px;padding:16px}
+.shop{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+label{font-size:12px;color:var(--mut);display:block;margin-top:8px}
+input,select,textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:14px;background:#fff}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.col{background:#ebe2d5;border-radius:14px;padding:10px;min-height:300px}
+.col h3{margin:4px 6px 10px;display:flex;justify-content:space-between;font-size:15px}
+.col h3 .n{background:var(--ch);color:#fff;border-radius:20px;padding:1px 9px;font-size:12px}
+.oc{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:10px;border-left:5px solid var(--m);box-shadow:0 1px 3px rgba(0,0,0,.08);cursor:pointer}
+.oc.packaged{border-left-color:var(--sun)}.oc.shipped{border-left-color:var(--ok)}
+.oc .t{display:flex;justify-content:space-between;font-weight:700}.oc .s{font-size:12px;color:var(--mut)}
+.oc ul{margin:6px 0;padding-left:18px;font-size:13px}.oc .acts{display:flex;gap:6px;justify-content:flex-end;margin-top:6px}
+.tag{font-size:11px;padding:2px 7px;border-radius:10px;font-weight:600}.paid{background:#dcefe2;color:var(--ok)}.owe{background:#f7dede;color:var(--m)}.part{background:#fbe9d4;color:#9a5a12}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.kpi{background:#fff;border-radius:12px;padding:14px;border:1px solid var(--line)}.kpi .l{font-size:12px;color:var(--mut)}.kpi .v{font-size:26px;font-weight:700}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}th{background:var(--ch);color:#fff;font-weight:600}
+td.r,th.r{text-align:right}
+.bar{height:8px;background:var(--m);border-radius:4px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:20}
+.modal.on{display:flex}.mbox{background:#fff;border-radius:16px;padding:20px;width:min(560px,94vw);max-height:90vh;overflow:auto}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ch);color:#fff;padding:10px 18px;border-radius:10px;display:none;z-index:30}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.tools input{max-width:260px}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:30px}
+.tr-hero{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:center;background:#fff;border-radius:18px;padding:22px;border:1px solid var(--line)}
+.tr-hero img{width:100%;border-radius:14px}
+.pill{display:inline-block;background:var(--m);color:#fff;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:4px 10px;border-radius:20px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.facts div{background:var(--cr);border-radius:10px;padding:10px}.facts b{display:block;font-size:20px;color:var(--m2)}.facts span{font-size:12px;color:var(--mut)}
+.tl{position:relative;margin:10px 0 0 14px;border-left:3px solid var(--sun);padding-left:22px}
+.tl .st{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px;opacity:0;transform:translateY(12px);transition:all .5s}
+.tl .st.in{opacity:1;transform:none}
+.tl .st:before{content:attr(data-i);position:absolute;left:-38px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--m);color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center}
+.tl .st b{color:var(--m2)}.tl .st .d{font-size:12px;color:var(--mut);float:right}
+.qrbox{display:flex;gap:16px;align-items:center;background:#fff;border-radius:14px;padding:16px;border:1px solid var(--line)}.qrbox img{width:150px;box-shadow:none;border-radius:0}
+.inv{display:grid;grid-template-columns:330px 1fr;gap:20px;align-items:start}
+.sliders{background:#fff;border-radius:14px;padding:16px;border:1px solid var(--line)}
+.sliders .sv{display:flex;justify-content:space-between;font-size:13px;margin-top:12px}.sliders .sv b{color:var(--m)}
+.sliders input[type=range]{padding:0;accent-color:var(--m)}
+.chart{background:#fff;border-radius:14px;padding:14px;border:1px solid var(--line)}.ch-t{font-weight:700;margin-bottom:6px}
+@media(max-width:800px){.tr-hero,.inv{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}}
+@media(max-width:800px){.shop,.strip,.strip.tight,.board{grid-template-columns:1fr}.hero h1{font-size:28px}.hero{min-height:260px}}
+@media print{header,.noprint{display:none}}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="logo" viewBox="0 0 200 170">
+  <path id="arc" d="M25,70 Q100,8 175,70" fill="none"/>
+  <text font-family="Georgia,serif" font-size="25" font-weight="700" letter-spacing="2" fill="currentColor"><textPath href="#arc" startOffset="50%" text-anchor="middle">SHADED W</textPath></text>
+  <!-- TW brand (T above the W), traced from Trevor's brand, same art as the ammo case lid -->
+  <path transform="translate(100,101) scale(64)" fill="#b8323f" d="M-0.6445,-0.3725L-0.6140,-0.1768L-0.5996,-0.1768L-0.5871,-0.1804L-0.5871,-0.2181L-0.5835,-0.2343L-0.5835,-0.2487L-0.5727,-0.2882L-0.5655,-0.3025L-0.5458,-0.3241L-0.5242,-0.3384L-0.4650,-0.3600L-0.3734,-0.3779L-0.3555,-0.3761L-0.3303,-0.2648L-0.3124,-0.2020L-0.3124,-0.1948L-0.2908,-0.1176L-0.2908,-0.1104L-0.2873,-0.1032L-0.2657,-0.0099L-0.2621,-0.0045L-0.2442,0.0745L-0.2298,0.1230L-0.2190,0.1732L-0.2154,0.1804L-0.1975,0.2576L-0.1939,0.2648L-0.1939,0.2720L-0.1903,0.2792L-0.1903,0.2864L-0.1867,0.2935L-0.1867,0.3007L-0.1831,0.3079L-0.1831,0.3151L-0.1795,0.3223L-0.1795,0.3294L-0.1724,0.3492L-0.1724,0.3564L-0.1688,0.3636L-0.1688,0.3707L-0.1652,0.3779L-0.1652,0.3851L-0.1616,0.3923L-0.1544,0.4282L-0.1346,0.5000L-0.0287,0.5000L-0.0251,0.4946L-0.0090,0.4300L-0.0018,0.4102L-0.0018,0.4031L0.0197,0.3312L0.0197,0.3241L0.0305,0.2917L0.0305,0.2846L0.0449,0.2397L0.0808,0.1014L0.1167,-0.0224L0.1382,-0.1158L0.1472,-0.1715L0.1508,-0.1768L0.1544,-0.1768L0.1580,-0.1661L0.1580,-0.1535L0.1616,-0.1427L0.1616,-0.1302L0.1688,-0.0907L0.1724,-0.0817L0.1724,-0.0727L0.1867,-0.0045L0.1903,0.0027L0.1903,0.0117L0.1939,0.0189L0.1975,0.0422L0.2047,0.0637L0.2047,0.0727L0.2118,0.0943L0.2190,0.1320L0.2262,0.1535L0.2334,0.1912L0.2406,0.2127L0.2478,0.2504L0.2549,0.2720L0.2549,0.2792L0.3088,0.4982L0.3106,0.5000L0.4165,0.5000L0.4183,0.4982L0.4363,0.4354L0.4363,0.4282L0.4399,0.4228L0.4578,0.3528L0.4614,0.3474L0.4686,0.3151L0.5045,0.1948L0.5045,0.1876L0.5081,0.1822L0.5099,0.1697L0.5224,0.1320L0.5224,0.1248L0.5296,0.1068L0.5296,0.0996L0.5332,0.0943L0.5332,0.0871L0.5655,-0.0206L0.5655,-0.0278L0.5691,-0.0332L0.5799,-0.0709L0.5799,-0.0781L0.5835,-0.0835L0.5835,-0.0907L0.5943,-0.1212L0.5943,-0.1284L0.5978,-0.1338L0.5978,-0.1409L0.6266,-0.2361L0.6266,-0.2433L0.6302,-0.2487L0.6320,-0.2612L0.6445,-0.2989L0.6445,-0.3079L0.5422,-0.3079L0.5404,-0.3061L0.5171,-0.2199L0.5171,-0.2127L0.5099,-0.1930L0.5099,-0.1858L0.5027,-0.1661L0.4991,-0.1445L0.4919,-0.1248L0.4811,-0.0763L0.4704,-0.0422L0.4704,-0.0350L0.4596,-0.0009L0.4560,0.0206L0.4417,0.0673L0.4381,0.0889L0.4273,0.1230L0.4273,0.1302L0.4201,0.1517L0.4201,0.1589L0.3842,0.3025L0.3842,0.3115L0.3698,0.3725L0.3662,0.3725L0.3627,0.3671L0.3537,0.3043L0.3321,0.1984L0.3250,0.1750L0.3250,0.1661L0.3214,0.1589L0.3070,0.0907L0.3034,0.0835L0.2962,0.0458L0.2926,0.0386L0.2855,0.0009L0.2819,-0.0063L0.2819,-0.0135L0.2747,-0.0368L0.2675,-0.0745L0.2639,-0.0817L0.2639,-0.0889L0.2603,-0.0961L0.2567,-0.1194L0.2496,-0.1409L0.2460,-0.1643L0.2424,-0.1715L0.2101,-0.3079L0.1041,-0.3079L0.0969,-0.2899L0.0898,-0.2558L0.0646,-0.1679L0.0646,-0.1607L0.0395,-0.0727L0.0395,-0.0655L0.0323,-0.0458L0.0323,-0.0386L0.0251,-0.0189L0.0180,0.0153L0.0000,0.0763L0.0000,0.0835L-0.0251,0.1715L-0.0251,0.1786L-0.0287,0.1858L-0.0287,0.1930L-0.0323,0.2002L-0.0575,0.3043L-0.0700,0.3761L-0.0754,0.3779L-0.0952,0.2774L-0.0987,0.2684L-0.0987,0.2594L-0.1203,0.1625L-0.1239,0.1553L-0.1239,0.1463L-0.1275,0.1391L-0.1490,0.0386L-0.1562,0.0171L-0.1562,0.0081L-0.1598,0.0009L-0.1670,-0.0368L-0.1706,-0.0440L-0.1706,-0.0530L-0.1741,-0.0601L-0.2065,-0.2056L-0.2101,-0.2127L-0.2136,-0.2361L-0.2244,-0.2738L-0.2280,-0.2971L-0.2316,-0.3043L-0.2496,-0.3797L-0.2513,-0.3995L-0.2442,-0.4031L-0.2352,-0.4031L-0.2262,-0.4066L-0.1472,-0.4210L-0.0826,-0.4228L-0.0575,-0.4174L-0.0305,-0.3995L-0.0108,-0.3761L0.0072,-0.3474L0.0269,-0.3043L0.0305,-0.3007L0.0557,-0.3061L0.0485,-0.3330L0.0485,-0.3420L0.0449,-0.3492L0.0377,-0.3887L0.0341,-0.3959L0.0341,-0.4048L0.0305,-0.4120L0.0233,-0.4515L0.0197,-0.4587L0.0108,-0.5000Z"/>
+  <text x="100" y="160" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="currentColor">Cattle Co.</text>
+</symbol></defs></svg>
+
+<header>
+  <div class="brand"><svg width="54" height="46" style="color:#fff"><use href="#logo"/></svg><span>SHADED W CATTLE CO.</span></div>
+  <nav>
+    <button data-v="store" class="on">🛒 Storefront</button>
+    <button data-v="board">📦 Orders</button>
+    <button data-v="money">💲 Money</button>
+    <button data-v="prices">🏷️ Price list</button>
+    <button data-v="trace">🐄 Pasture to Plate</button>
+    <button data-v="invest">📈 Investors</button>
+  </nav>
+</header>
+
+<!-- STOREFRONT -->
+<section id="store" class="view on">
+  <div class="hero"><div class="in">
+    <svg width="96" height="82" style="color:#fff"><use href="#logo"/></svg>
+    <h1>Texas-raised Wagyu, from our family herd.</h1>
+    <p>Fill the freezer with a whole, half or quarter, or order a ready box of steaks, BBQ cuts or ground.</p>
+    <div class="cta"><button class="btn" onclick="document.getElementById('bulk').scrollIntoView({behavior:'smooth'})">Whole · Half · Quarter</button>
+      <button class="btn ghost" onclick="document.getElementById('boxes').scrollIntoView({behavior:'smooth'})">Ready boxes</button></div>
+  </div></div>
+  <div class="wrap">
+    <div class="strip tight">
+      <img src="img/lot34.jpg" alt="Shaded W Wagyu, lot 34">
+      <div><h2>Raised right, from calf to box</h2>
+        <p>Born or raised on our place, grass-started and grain-finished for that Wagyu marbling. A state-inspected processor vacuum-seals, labels and freezes every cut.</p>
+        <div class="how"><span><b>1</b> Order</span><span><b>2</b> We package at the processor</span><span><b>3</b> Pick up, local delivery, or boxes ship cold</span></div></div>
+    </div>
+    <div class="shop">
+      <div>
+        <div class="sech" id="bulk"><h2 id="menu">Bulk beef: whole · half · quarter</h2><span>Freezer-fill shares · pickup or local delivery only · 25% deposit, final price on hanging weight</span></div>
+        <div class="grid" id="shareGrid"></div>
+        <div class="sech" id="boxes" style="margin-top:22px"><h2>Ready boxes</h2><span>Cut, sealed, frozen · pickup, delivery, or shipped cold</span></div>
+        <div class="grid" id="boxGrid"></div>
+      </div>
+      <div class="cart">
+        <h3 style="margin:0 0 6px">Your order</h3>
+        <div id="cartList" class="s" style="font-size:14px;color:var(--mut)">Nothing yet.</div>
+        <div style="margin:10px 0 4px">
+          <div class="dl"><span>Total</span><b id="cartTot">$0</b></div>
+          <div class="dl" id="depRow" style="display:none"><span>Balance on bulk, due at pickup</span><span id="cartBal">$0</span></div>
+          <div class="due">Due today: <span id="cartDue">$0</span></div>
+        </div>
+        <label>Name</label><input id="cName" placeholder="Jane Smith">
+        <label>Phone</label><input id="cPhone" placeholder="(512) 555-0100">
+        <label>Get it by</label><select id="cMethod"></select>
+        <label>Notes</label><input id="cNotes" placeholder="Cut preferences, thickness...">
+        <button class="btn" style="width:100%;margin-top:12px" onclick="placeOrder()">Place order</button>
+        <div class="s" style="font-size:11px;color:var(--mut);margin-top:6px">Bulk shares: 25% deposit now, balance on hanging weight; pickup or local delivery only. Boxes are paid in full and can ship.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER BOARD -->
+<section id="board" class="view"><div class="wrap">
+  <div class="tools">
+    <h2 style="margin:0 12px 0 0">Order board</h2>
+    <input id="q" placeholder="Search customer or order #" oninput="drawBoard()">
+    <button class="btn sm" onclick="editOrder()">+ New order</button>
+    <button class="btn sm alt" onclick="exportCSV()">⬇ Export to Excel (CSV)</button>
+    <a class="btn sm alt" href="ShadedW-Orders.xlsx" download style="text-decoration:none">⬇ Excel workbook</a>
+  </div>
+  <div class="board">
+    <div class="col"><h3>🟥 Order placed <span class="n" id="n_placed"></span></h3><div id="c_placed"></div></div>
+    <div class="col"><h3>🟧 Packaged <span class="n" id="n_packaged"></span></h3><div id="c_packaged"></div></div>
+    <div class="col"><h3>🟩 Shipped / picked up <span class="n" id="n_shipped"></span></h3><div id="c_shipped"></div></div>
+  </div>
+</div></section>
+
+<!-- MONEY -->
+<section id="money" class="view"><div class="wrap">
+  <h2>Money</h2>
+  <div class="kpis" id="kpis"></div>
+  <h3>By product</h3>
+  <table id="byProd"></table>
+  <h3 style="margin-top:22px">Who still owes</h3>
+  <table id="owes"></table>
+</div></section>
+
+<!-- PRICE LIST -->
+<section id="prices" class="view"><div class="wrap">
+  <div class="tools"><h2 style="margin:0">Price list &amp; costs</h2>
+    <span class="s" style="color:var(--mut);font-size:13px">Change a price or cost and the storefront + money page update instantly.</span></div>
+  <table id="priceTbl"></table>
+  <div class="tools" style="margin-top:12px">
+    <button class="btn sm" onclick="addProduct()">+ Add product</button>
+    <button class="btn sm gy" onclick="if(confirm('Reset demo data?')){localStorage.removeItem(KEY);location.reload()}">Reset demo data</button>
+  </div>
+  <p class="s" style="color:var(--mut);font-size:13px"><b>Cost</b> = your cost per unit (calf + feed + processing + packaging). Profit = price − cost.</p>
+</div></section>
+
+<!-- PASTURE TO PLATE (traceability) -->
+<section id="trace" class="view"><div class="wrap">
+  <div class="tr-hero">
+    <img src="img/lot34.jpg" alt="Lot 34">
+    <div>
+      <div class="pill">SCANNED FROM YOUR PACKAGE · LOT 34</div>
+      <h2 style="font-size:34px;margin:.2em 0">Meet the animal behind your beef.</h2>
+      <p>Every Shaded W package carries a QR code. Scan it and you see exactly where your beef came from: the calf, the pasture, the finish, the processor, the date it was packed. No other beef in the grocery store can tell you that.</p>
+      <div class="facts" id="trFacts"></div>
+    </div>
+  </div>
+  <h3>Lot 34's story</h3>
+  <div class="tl" id="trTl"></div>
+  <div class="strip" style="margin-top:26px">
+    <div class="qrbox"><img src="img/qr-lot34.png" alt="QR"><div><b>Try it:</b> point a phone camera at this code. It opens this page, the same as a customer scanning the sticker on their ribeye.</div></div>
+    <img src="img/leather-gold.jpg" alt="Shaded W brand" style="max-width:420px;justify-self:center">
+  </div>
+  <p class="s" style="color:var(--mut);font-size:12px">Demo data. In the live site every lot is entered once at processing; its QR prints on the package labels automatically.</p>
+</div></section>
+
+<!-- INVESTORS (projections) -->
+<section id="invest" class="view"><div class="wrap">
+  <h2>Growth model</h2>
+  <p style="color:var(--mut);margin-top:0">Move the sliders. Every number on this page recalculates live.</p>
+  <div class="inv">
+    <div class="sliders" id="sl"></div>
+    <div>
+      <div class="kpis" id="ik"></div>
+      <div class="chart"><div class="ch-t">5-year outlook: revenue vs. profit</div><svg id="ich" viewBox="0 0 560 260" width="100%"></svg></div>
+    </div>
+  </div>
+  <p style="color:var(--mut);font-size:12px">Illustrative model, not a forecast. Defaults: shares priced on hanging weight, boxes priced on take-home (~62% yield), cost per head covers calf, feed, processing and packaging.</p>
+</div></section>
+
+<div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+<footer>Shaded W Cattle Co. · Texas Wagyu · Demo built by N8 · data saves in this browser</footer>
+
+<script>
+const KEY='shadedw-demo-v1';
+const money=n=>'$'+Number(n||0).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0});
+const STAT=['placed','packaged','shipped'], SNAME={placed:'Order placed',packaged:'Packaged',shipped:'Shipped / picked up'};
+function seed(){
+  const P=[
+    {id:'whole',kind:'share',lb:430,ic:'🐄',name:'Whole Wagyu',desc:'~700 lb hanging weight, custom cut to your sheet. ~430 lb of take-home beef.',price:7700,cost:4300},
+    {id:'half',kind:'share',lb:215,ic:'🥩',name:'Half Wagyu',desc:'~350 lb hanging. Steaks, roasts, ground, BBQ cuts. Fills a 10 cu ft freezer.',price:3950,cost:2200},
+    {id:'qtr',kind:'share',lb:108,ic:'🧊',name:'Quarter Wagyu',desc:'~175 lb hanging. Great starter share for a family.',price:2050,cost:1150},
+    {id:'steak',kind:'box',lb:12,ic:'🔥',name:'Steak Box',desc:'Ribeyes, NY strips, filets, sirloin. ~12 lb.',price:425,cost:190},
+    {id:'bbq',kind:'box',lb:18,ic:'🍖',name:'BBQ Box',desc:'Brisket, short ribs, tri-tip, chuck roast. ~18 lb.',price:320,cost:150},
+    {id:'ground',kind:'box',lb:20,ic:'🍔',name:'Ground Wagyu Box',desc:'20 × 1 lb packs, 80/20. Best burgers you will ever make.',price:220,cost:95},
+    {id:'flank',kind:'box',lb:6,ic:'🌮',name:'Flank & Skirt Bundle',desc:'Flank + skirt steak, ~6 lb. Fajita night.',price:140,cost:60}];
+  const d=k=>new Date(Date.now()-k*864e5).toISOString().slice(0,10);
+  const O=[
+    {id:'SW-1001',date:d(21),cust:'Randy Mills',phone:'(512) 555-0142',method:'Pickup at ranch',items:[{p:'half',q:1}],paid:3950,status:'shipped',notes:'Thick-cut ribeyes 1.25"'},
+    {id:'SW-1002',date:d(18),cust:'Kelly Duran',phone:'(512) 555-0199',method:'Local delivery',items:[{p:'steak',q:1},{p:'ground',q:1}],paid:645,status:'shipped',notes:''},
+    {id:'SW-1003',date:d(12),cust:'Bastrop VFD (fundraiser)',phone:'(512) 555-0110',method:'Pickup at ranch',items:[{p:'ground',q:4},{p:'bbq',q:2}],paid:500,status:'packaged',notes:'Need by the 22nd'},
+    {id:'SW-1004',date:d(9),cust:'Mike & Sarah Tate',phone:'(737) 555-0123',method:'Pickup at ranch',items:[{p:'whole',q:1}],paid:1925,status:'packaged',notes:'Deposit paid, balance at pickup'},
+    {id:'SW-1005',date:d(5),cust:'Jordan Pike',phone:'(512) 555-0177',method:'Ship (cold pack)',items:[{p:'steak',q:2}],paid:850,status:'placed',notes:'Christmas gift, ship to Dallas'},
+    {id:'SW-1006',date:d(3),cust:'Lisa Ochoa',phone:'(512) 555-0164',method:'Local delivery',items:[{p:'qtr',q:1},{p:'flank',q:1}],paid:0,status:'placed',notes:''},
+    {id:'SW-1007',date:d(1),cust:'Cody Vance',phone:'(830) 555-0131',method:'Pickup at ranch',items:[{p:'bbq',q:1},{p:'ground',q:2}],paid:760,status:'placed',notes:''}];
+  return {P,O,next:1008};
+}
+let DB=JSON.parse(localStorage.getItem(KEY)||'null')||seed();
+const save=()=>localStorage.setItem(KEY,JSON.stringify(DB));
+const prod=id=>DB.P.find(p=>p.id===id)||{name:id,price:0,cost:0,ic:'?'};
+const SHARE_IDS=['whole','half','qtr'],LB0={whole:430,half:215,qtr:108};   // older saved browser data has no kind/lb
+const kindOf=p=>p.kind||(SHARE_IDS.includes(p.id)?'share':'box'),lbOf=p=>p.lb||LB0[p.id]||0,DEP=.25;
+const tot=o=>o.items.reduce((s,i)=>s+prod(i.p).price*i.q,0);
+const cst=o=>o.items.reduce((s,i)=>s+prod(i.p).cost*i.q,0);
+const payTag=o=>{const t=tot(o),p=+o.paid||0;return p>=t?'<span class="tag paid">PAID</span>':p>0?`<span class="tag part">owes ${money(t-p)}</span>`:'<span class="tag owe">UNPAID</span>'};
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2200)}
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// tabs
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===b.dataset.v));
+  drawAll();window.scrollTo(0,0)});
+
+// storefront
+let cart={};
+function card(p){
+  const sh=kindOf(p)==='share',lb=lbOf(p);
+  const extra=sh?`<div class="lb">~${lb} lb take-home${lb?` · about ${money(p.price/lb)}/lb`:''}</div><div class="dep">Deposit today ${money(p.price*DEP)}</div>`:`<div class="lb">${lb?`~${lb} lb · `:''}ships cold</div>`;
+  return `<div class="prod ${sh?'share':''}"><span class="badge ${sh?'':'b2'}">${sh?'BULK SHARE':'BOX'}</span><div class="ic">${p.ic}</div><h3>${esc(p.name)}</h3><div class="d">${esc(p.desc)}</div>
+   <div class="p">${money(p.price)}</div>${extra}<div class="qty"><button onclick="cq('${p.id}',-1)">−</button><b>${cart[p.id]||0}</b><button onclick="cq('${p.id}',1)">+</button></div></div>`;
+}
+function cartSplit(){
+  const ks=Object.keys(cart).filter(k=>cart[k]>0);let sh=0,bx=0;
+  ks.forEach(k=>{const v=prod(k).price*cart[k];kindOf(prod(k))==='share'?sh+=v:bx+=v});
+  return {ks,sh,bx,dep:Math.round(sh*DEP)};
+}
+function drawStore(){
+  document.getElementById('shareGrid').innerHTML=DB.P.filter(p=>kindOf(p)==='share').map(card).join('');
+  document.getElementById('boxGrid').innerHTML=DB.P.filter(p=>kindOf(p)!=='share').map(card).join('');
+  const {ks,sh,bx,dep}=cartSplit(),sel=document.getElementById('cMethod'),cur=sel.value;
+  const opts=sh?['Pickup at ranch','Local delivery']:['Pickup at ranch','Local delivery','Ship (cold pack)'];   // shares are never shipped
+  sel.innerHTML=opts.map(m=>`<option ${m===cur?'selected':''}>${m}</option>`).join('');
+  document.getElementById('cartList').innerHTML=ks.length?ks.map(k=>`${cart[k]} × ${esc(prod(k).name)} <span style="float:right">${money(prod(k).price*cart[k])}</span>`).join('<br>'):'Nothing yet.';
+  document.getElementById('cartTot').textContent=money(sh+bx);
+  document.getElementById('depRow').style.display=sh?'flex':'none';
+  document.getElementById('cartBal').textContent=money(sh-dep);
+  document.getElementById('cartDue').textContent=money(dep+bx);
+}
+function cq(id,d){cart[id]=Math.max(0,(cart[id]||0)+d);drawStore()}
+function placeOrder(){
+  const items=Object.keys(cart).filter(k=>cart[k]>0).map(k=>({p:k,q:cart[k]}));
+  const name=document.getElementById('cName').value.trim();
+  if(!items.length)return toast('Add something to the order first');
+  if(!name)return toast('Enter a name');
+  const {sh,bx,dep}=cartSplit(),note=document.getElementById('cNotes').value;
+  const o={id:'SW-'+DB.next++,date:new Date().toISOString().slice(0,10),cust:name,phone:document.getElementById('cPhone').value,method:document.getElementById('cMethod').value,items,paid:0,status:'placed',notes:(sh?`Bulk: deposit due ${money(dep+bx)} now, balance ${money(sh-dep)} on hanging weight. `:'')+note};
+  DB.O.push(o);save();cart={};['cName','cPhone','cNotes'].forEach(i=>document.getElementById(i).value='');drawStore();
+  toast(`Order ${o.id} placed. It's on the Orders board.`);
+}
+
+// board
+function drawBoard(){
+  const q=(document.getElementById('q').value||'').toLowerCase();
+  STAT.forEach(s=>{
+    const L=DB.O.filter(o=>o.status===s&&(!q||(o.cust+o.id).toLowerCase().includes(q))).sort((a,b)=>b.date.localeCompare(a.date));
+    document.getElementById('n_'+s).textContent=L.length;
+    document.getElementById('c_'+s).innerHTML=L.map(o=>{const i=STAT.indexOf(s);return `<div class="oc ${s}" onclick="editOrder('${o.id}')">
+      <div class="t"><span>${esc(o.cust)}</span><span>${money(tot(o))}</span></div>
+      <div class="s">${o.id} · ${o.date} · ${esc(o.method)}</div>
+      <ul>${o.items.map(it=>`<li>${it.q} × ${esc(prod(it.p).name)}</li>`).join('')}</ul>
+      ${o.notes?`<div class="s">📝 ${esc(o.notes)}</div>`:''}
+      <div class="acts">${payTag(o)}<span style="flex:1"></span>
+       ${i>0?`<button class="btn sm gy" onclick="event.stopPropagation();mv('${o.id}',-1)">◀</button>`:''}
+       <button class="btn sm alt" onclick="event.stopPropagation();invoice('${o.id}')">🧾</button>
+       ${i<2?`<button class="btn sm ${i?'gr':''}" onclick="event.stopPropagation();mv('${o.id}',1)">${i?'Shipped ▶':'Packaged ▶'}</button>`:''}</div></div>`}).join('')||'<div class="s" style="padding:10px;color:var(--mut)">None</div>';
+  });
+}
+function mv(id,d){const o=DB.O.find(x=>x.id===id);o.status=STAT[STAT.indexOf(o.status)+d];save();drawBoard();toast(`${o.id} → ${SNAME[o.status]}`)}
+
+function editOrder(id){
+  const o=id?DB.O.find(x=>x.id===id):{id:'SW-'+DB.next,date:new Date().toISOString().slice(0,10),cust:'',phone:'',method:'Pickup at ranch',items:[{p:DB.P[0].id,q:1}],paid:0,status:'placed',notes:'',_new:1};
+  const opt=sel=>DB.P.map(p=>`<option value="${p.id}" ${p.id===sel?'selected':''}>${esc(p.name)} (${money(p.price)})</option>`).join('');
+  const itemRow=(it)=>`<div class="row it" style="grid-template-columns:1fr 70px 30px;margin-top:6px"><select>${opt(it.p)}</select><input type="number" min="1" value="${it.q}"><button class="btn sm gy" onclick="this.parentNode.remove()">✕</button></div>`;
+  document.getElementById('mbox').innerHTML=`<h2 style="margin-top:0">${o._new?'New order':o.id}</h2>
+   <div class="row"><div><label>Customer</label><input id="e_c" value="${esc(o.cust)}"></div><div><label>Phone</label><input id="e_p" value="${esc(o.phone)}"></div></div>
+   <div class="row"><div><label>Date</label><input id="e_d" type="date" value="${o.date}"></div><div><label>Method</label><select id="e_m">${['Pickup at ranch','Local delivery','Ship (cold pack)'].map(m=>`<option ${m===o.method?'selected':''}>${m}</option>`).join('')}</select></div></div>
+   <label>Items</label><div id="e_items">${o.items.map(itemRow).join('')}</div>
+   <button class="btn sm alt" style="margin-top:6px" id="e_add">+ item</button>
+   <div class="row"><div><label>Status</label><select id="e_s">${STAT.map(s=>`<option value="${s}" ${s===o.status?'selected':''}>${SNAME[s]}</option>`).join('')}</select></div>
+    <div><label>Amount paid ($) · total ${money(tot(o))}</label><input id="e_pd" type="number" value="${o.paid}"></div></div>
+   <label>Notes</label><textarea id="e_n" rows="2">${esc(o.notes)}</textarea>
+   <div style="display:flex;gap:8px;margin-top:14px">${o._new?'':'<button class="btn sm gy" id="e_del">Delete</button>'}<span style="flex:1"></span>
+    <button class="btn sm alt" onclick="closeM()">Cancel</button><button class="btn sm" id="e_save">Save</button></div>`;
+  document.getElementById('e_add').onclick=()=>document.getElementById('e_items').insertAdjacentHTML('beforeend',itemRow({p:DB.P[0].id,q:1}));
+  if(!o._new)document.getElementById('e_del').onclick=()=>{if(confirm('Delete '+o.id+'?')){DB.O=DB.O.filter(x=>x!==o);save();closeM();drawAll()}};
+  document.getElementById('e_save').onclick=()=>{
+    const v=i=>document.getElementById(i).value;
+    o.cust=v('e_c').trim()||'(no name)';o.phone=v('e_p');o.date=v('e_d');o.method=v('e_m');o.status=v('e_s');o.paid=+v('e_pd')||0;o.notes=v('e_n');
+    o.items=[...document.querySelectorAll('#e_items .it')].map(r=>({p:r.querySelector('select').value,q:+r.querySelector('input').value||1}));
+    if(o._new){delete o._new;DB.next++;DB.O.push(o)}
+    save();closeM();drawAll();toast('Saved '+o.id)};
+  document.getElementById('modal').classList.add('on');
+}
+function closeM(){document.getElementById('modal').classList.remove('on')}
+document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeM()};
+
+function invoice(id){
+  const o=DB.O.find(x=>x.id===id),t=tot(o),w=window.open('','_blank');
+  w.document.write(`<html><head><title>Invoice ${o.id}</title><style>body{font-family:Segoe UI,sans-serif;max-width:700px;margin:30px auto;color:#222}
+   h1{color:#7a1f2b;font-family:Georgia,serif;margin:0}table{width:100%;border-collapse:collapse;margin:20px 0}td,th{padding:8px;border-bottom:1px solid #ddd;text-align:left}.r{text-align:right}
+   .top{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #7a1f2b;padding-bottom:10px}</style></head><body>
+   <div class="top"><div><h1>Shaded W Cattle Co.</h1>Texas Wagyu Beef</div><div class="r"><b>INVOICE ${o.id}</b><br>${o.date}</div></div>
+   <p><b>Bill to:</b> ${esc(o.cust)}<br>${esc(o.phone)}<br>${esc(o.method)}</p>
+   <table><tr><th>Item</th><th class="r">Qty</th><th class="r">Price</th><th class="r">Amount</th></tr>
+   ${o.items.map(i=>`<tr><td>${esc(prod(i.p).name)}</td><td class="r">${i.q}</td><td class="r">${money(prod(i.p).price)}</td><td class="r">${money(prod(i.p).price*i.q)}</td></tr>`).join('')}
+   <tr><td colspan=3 class="r"><b>Total</b></td><td class="r"><b>${money(t)}</b></td></tr>
+   <tr><td colspan=3 class="r">Paid</td><td class="r">${money(o.paid)}</td></tr>
+   <tr><td colspan=3 class="r"><b>Balance due</b></td><td class="r"><b>${money(Math.max(0,t-o.paid))}</b></td></tr></table>
+   ${o.notes?`<p>Notes: ${esc(o.notes)}</p>`:''}<p style="color:#777;font-size:13px">Keep frozen at 0°F. Thank you for supporting a family ranch!</p>
+   <script>print()<\/script></body></html>`);w.document.close();
+}
+
+// money
+function drawMoney(){
+  const S=DB.O.reduce((a,o)=>(a.s+=tot(o),a.c+=cst(o),a.p+=Math.min(+o.paid||0,tot(o)),a),{s:0,c:0,p:0});
+  const k=[['Orders',DB.O.length,''],['Sales',money(S.s),''],['Est. cost',money(S.c),''],['Profit',money(S.s-S.c),'var(--ok)'],['Margin',S.s?Math.round((S.s-S.c)/S.s*100)+'%':'—',''],['Collected',money(S.p),''],['Still owed',money(S.s-S.p),'var(--m)']];
+  document.getElementById('kpis').innerHTML=k.map(x=>`<div class="kpi"><div class="l">${x[0]}</div><div class="v" style="color:${x[2]||'inherit'}">${x[1]}</div></div>`).join('');
+  const by={};DB.O.forEach(o=>o.items.forEach(i=>{const b=by[i.p]||(by[i.p]={q:0,s:0,c:0});const p=prod(i.p);b.q+=i.q;b.s+=p.price*i.q;b.c+=p.cost*i.q}));
+  const mx=Math.max(1,...Object.values(by).map(b=>b.s));
+  document.getElementById('byProd').innerHTML='<tr><th>Product</th><th class="r">Sold</th><th class="r">Sales</th><th class="r">Cost</th><th class="r">Profit</th><th style="width:25%"></th></tr>'+
+    Object.entries(by).sort((a,b)=>b[1].s-a[1].s).map(([id,b])=>`<tr><td>${prod(id).ic} ${esc(prod(id).name)}</td><td class="r">${b.q}</td><td class="r">${money(b.s)}</td><td class="r">${money(b.c)}</td><td class="r"><b>${money(b.s-b.c)}</b></td><td><div class="bar" style="width:${b.s/mx*100}%"></div></td></tr>`).join('');
+  const ow=DB.O.filter(o=>tot(o)>(+o.paid||0));
+  document.getElementById('owes').innerHTML='<tr><th>Order</th><th>Customer</th><th>Status</th><th class="r">Total</th><th class="r">Paid</th><th class="r">Owes</th></tr>'+
+    (ow.map(o=>`<tr style="cursor:pointer" onclick="editOrder('${o.id}')"><td>${o.id}</td><td>${esc(o.cust)}</td><td>${SNAME[o.status]}</td><td class="r">${money(tot(o))}</td><td class="r">${money(o.paid)}</td><td class="r"><b>${money(tot(o)-o.paid)}</b></td></tr>`).join('')||'<tr><td colspan=6>Everyone is paid up 🎉</td></tr>');
+}
+
+// prices
+function drawPrices(){
+  document.getElementById('priceTbl').innerHTML='<tr><th></th><th>Product</th><th>Type</th><th>Description</th><th class="r">Price</th><th class="r">Cost</th><th class="r">Profit / unit</th><th class="r">Margin</th></tr>'+
+   DB.P.map((p,i)=>`<tr><td><input style="width:46px" value="${p.ic}" onchange="up(${i},'ic',this.value)"></td><td><input value="${esc(p.name)}" onchange="up(${i},'name',this.value)"></td>
+    <td><select style="width:92px" onchange="up(${i},'kind',this.value)"><option value="share" ${kindOf(p)==='share'?'selected':''}>Bulk share</option><option value="box" ${kindOf(p)==='share'?'':'selected'}>Box</option></select></td>
+    <td><input value="${esc(p.desc)}" onchange="up(${i},'desc',this.value)"></td>
+    <td class="r"><input type="number" style="width:90px" value="${p.price}" onchange="up(${i},'price',+this.value)"></td>
+    <td class="r"><input type="number" style="width:90px" value="${p.cost}" onchange="up(${i},'cost',+this.value)"></td>
+    <td class="r"><b>${money(p.price-p.cost)}</b></td><td class="r">${p.price?Math.round((p.price-p.cost)/p.price*100):0}%</td></tr>`).join('');
+}
+function up(i,k,v){DB.P[i][k]=v;save();drawPrices();toast('Price list updated')}
+function addProduct(){DB.P.push({id:'p'+Date.now(),kind:'box',lb:0,ic:'🥩',name:'New product',desc:'',price:0,cost:0});save();drawPrices()}
+
+function exportCSV(){
+  const rows=[['Order','Date','Customer','Phone','Method','Items','Status','Total','Est Cost','Profit','Paid','Owes','Notes']];
+  DB.O.forEach(o=>rows.push([o.id,o.date,o.cust,o.phone,o.method,o.items.map(i=>i.q+' x '+prod(i.p).name).join('; '),SNAME[o.status],tot(o),cst(o),tot(o)-cst(o),o.paid,tot(o)-o.paid,o.notes]));
+  const csv=rows.map(r=>r.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv'}));a.download='ShadedW-orders-'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+}
+// ---- Pasture to Plate (traceability)
+const LOT={id:34,facts:[['742 lb','hanging weight'],['BMS 6','marbling (demo)'],['412 days','on our grass + finish']],
+  steps:[['Born on the ranch','Mar 2025','Out of our Wagyu-cross cow herd. Tagged Lot 34 at birth.'],
+         ['Weaned on native pasture','Oct 2025','Grass, hay and minerals. No hormones, no daily antibiotics.'],
+         ['Grain finish','Jun–Oct 2026','Slow Wagyu finish on a Texas ration for the marbling you can see.'],
+         ['Processed','Nov 4, 2026','Inspected processor. Dry-aged 14 days, hand cut to the customer\'s cut sheet.'],
+         ['Vacuum sealed + frozen','Nov 18, 2026','Each package labeled with this lot\'s QR code.'],
+         ['On your table','Today','Thank you for buying beef from a family ranch.']]};
+function drawTrace(){
+  document.getElementById('trFacts').innerHTML=LOT.facts.map(f=>`<div><b>${f[0]}</b><span>${f[1]}</span></div>`).join('');
+  document.getElementById('trTl').innerHTML=LOT.steps.map((s,i)=>`<div class="st" data-i="${i+1}"><span class="d">${s[1]}</span><b>${s[0]}</b><div style="font-size:14px;margin-top:4px">${s[2]}</div></div>`).join('');
+  document.querySelectorAll('#trTl .st').forEach((e,i)=>setTimeout(()=>e.classList.add('in'),150+i*220));
+}
+// ---- Investor growth model
+const SL=[['head','Head finished, year 1',4,60,12,1,''],['grow','Herd growth per year',0,60,25,5,'%'],['hw','Hanging weight (lb)',550,900,720,10,''],
+  ['share','Sold as whole/half/qtr',0,100,60,5,'%'],['psh','Share price ($/lb hanging)',7,16,11,0.25,'$'],['pbox','Box price ($/lb take-home)',14,40,24,1,'$'],
+  ['cost','Cost per head (all-in)',2000,7000,4800,100,'$']];
+const IV={};SL.forEach(s=>IV[s[0]]=s[4]);
+function drawInvest(){
+  if(!document.getElementById('sl').children.length)document.getElementById('sl').innerHTML=SL.map(s=>`<div class="sv"><span>${s[1]}</span><b id="v_${s[0]}"></b></div><input type="range" min="${s[2]}" max="${s[3]}" step="${s[5]}" value="${IV[s[0]]}" oninput="IV['${s[0]}']=+this.value;drawInvest()">`).join('');
+  SL.forEach(s=>document.getElementById('v_'+s[0]).textContent=s[6]==='$'?'$'+IV[s[0]].toLocaleString():IV[s[0]]+s[6]);
+  const perHead=()=>{const sh=IV.share/100;return sh*IV.hw*IV.psh+(1-sh)*IV.hw*0.62*IV.pbox-(1-sh)*IV.hw*0.62*1.5};  // $1.50/lb box packaging + ship supplies
+  const yrs=[];let h=IV.head;for(let y=1;y<=5;y++){const rev=h*perHead(),pr=rev-h*IV.cost;yrs.push({y,h:Math.round(h),rev,pr});h*=1+IV.grow/100}
+  const y1=yrs[0],t5=yrs.reduce((a,b)=>({rev:a.rev+b.rev,pr:a.pr+b.pr}),{rev:0,pr:0});
+  document.getElementById('ik').innerHTML=[['Revenue / head',money(perHead())],['Profit / head',money(perHead()-IV.cost)],['Year-1 revenue',money(y1.rev)],['Year-1 profit',money(y1.pr)],['5-yr revenue',money(t5.rev)],['5-yr profit',money(t5.pr)]]
+    .map((k,i)=>`<div class="kpi"><div class="l">${k[0]}</div><div class="v" style="color:${i%2?(k[1].includes('-')?'var(--m)':'var(--ok)'):'inherit'}">${k[1]}</div></div>`).join('');
+  const mx=Math.max(1,...yrs.map(r=>r.rev)),H=170,bw=38;
+  document.getElementById('ich').innerHTML=yrs.map((r,i)=>{const x=40+i*104,hr=r.rev/mx*H,hp=Math.max(0,r.pr)/mx*H;
+    return `<rect x="${x}" y="${220-hr}" width="${bw}" height="${hr}" rx="4" fill="#d9c7ae"><animate attributeName="height" from="0" to="${hr}" dur=".5s"/><animate attributeName="y" from="220" to="${220-hr}" dur=".5s"/></rect>
+      <rect x="${x+bw+4}" y="${220-hp}" width="${bw}" height="${hp}" rx="4" fill="#2f7d4f"/>
+      <text x="${x+bw}" y="242" text-anchor="middle" font-size="12" fill="#7b716a">Yr ${r.y} · ${r.h} hd</text>
+      <text x="${x+bw/2}" y="${214-hr}" text-anchor="middle" font-size="11" fill="#2a2725">${money(r.rev/1000)}k</text>`}).join('')+
+    `<line x1="30" y1="220" x2="550" y2="220" stroke="#e3d9cc"/><rect x="40" y="6" width="10" height="10" fill="#d9c7ae"/><text x="54" y="15" font-size="11">Revenue</text><rect x="120" y="6" width="10" height="10" fill="#2f7d4f"/><text x="134" y="15" font-size="11">Profit</text>`;
+}
+function drawAll(){drawStore();drawBoard();drawMoney();drawPrices();drawInvest()}
+drawAll();
+function openView(v){const b=document.querySelector(`nav button[data-v="${v}"]`);if(b)b.click()}
+document.querySelector('nav button[data-v="trace"]').addEventListener('click',drawTrace);
+if(location.hash.startsWith('#trace'))openView('trace');
+if(location.hash==='#invest')openView('invest');
+if(location.hash)setTimeout(()=>window.scrollTo(0,0),60);
+</script></body></html>
